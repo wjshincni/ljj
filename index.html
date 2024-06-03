@@ -65,7 +65,12 @@
 				const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 				const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 				const extraSeconds = Math.floor((distance % 1000) / 100);
-				document.getElementById('timeCount').innerHTML = days + "天" + hours + "小时" + minutes + "分钟" + seconds + "秒" + extraSeconds + '"';
+				if(isPhone){
+					document.getElementById('timeCount').innerHTML = days + "天<br>" + hours + "小时<br>" + minutes + "分钟<br>" + seconds + "秒<br>" + extraSeconds + '"';
+				}
+				else{
+					document.getElementById('timeCount').innerHTML = days + "天" + hours + "小时" + minutes + "分钟" + seconds + "秒" + extraSeconds + '"';
+				}
 			  }
 			  else{
 				document.getElementById('timeCount').innerHTML = "中考结束了<br>祈祷你的好成绩！";
@@ -79,6 +84,12 @@
 			 
 			// 每秒更新一次倒计时
 			const intervalId = setInterval(countdown, 100, endTime);
+			const pageW = screen.width;
+			const pageH = screen.height;
+			var isPhone = false;
+			if(pageW < pageH){
+				isPhone = true;
+			}
 		</script>
 	</head>
 	<body id="bg">
